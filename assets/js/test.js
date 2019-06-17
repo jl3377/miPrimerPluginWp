@@ -1,0 +1,1 @@
+alert('los scripts sólo funcionaran en la página de mi plugin');
