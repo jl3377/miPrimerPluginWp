@@ -11,10 +11,6 @@
  * Text Domain: miPrimerPlugin
 */
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 define ( '_MY_PLUGIN_DIR', plugin_dir_path(__FILE__) );
 define ( '_MY_PLUGIN_DIR_URL', plugin_dir_url(__FILE__) );
 
