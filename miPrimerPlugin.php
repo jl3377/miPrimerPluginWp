@@ -18,13 +18,9 @@ if ( is_admin() || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 
     require_once( _MY_PLUGIN_DIR . 'inc/miPrimerPlugin.class.php' );    
     $miPrimerPlugin = new miPrimerPlugin();  
+    $miPrimerPlugin->init();
 
     // activation de plugin
     register_activation_hook( __FILE__, [ $miPrimerPlugin, 'activation' ] );    
-
-    // crear menús de administración
-    add_action( 'admin_menu', [ $miPrimerPlugin, 'addAdminMenu' ] );  
-
-    // scripts
-    add_action( 'admin_enqueue_scripts', [ $miPrimerPlugin, 'addScripts' ] );    
+   
 }

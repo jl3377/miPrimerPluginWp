@@ -8,6 +8,16 @@
 
 class miPrimerPlugin {
 
+    public function init() {
+
+        // crear menús de administración
+        add_action( 'admin_menu', [ __CLASS__, 'addAdminMenu' ] );  
+
+        // scripts backend    
+        add_action( 'admin_enqueue_scripts', [ __CLASS__, 'addScripts' ] );    
+
+    }
+
     /**
      * Activación del Plugin
      * @desc creación de tablas personalizadas 
@@ -35,7 +45,7 @@ class miPrimerPlugin {
      * menus
      * @desc inclusión de menus y submenús al Plugin
      */
-    public function addAdminMenu() {
+    static function addAdminMenu() {
 
         // main menu
         add_menu_page('Mi Plugin', 'Mi Plugin', 'manage_options', 'mi-plugin', [ __CLASS__, 'pageDashboard' ], 'dashicons-visibility');
@@ -65,7 +75,7 @@ class miPrimerPlugin {
      * Scripts
      * @desc inclusión de scripts a nuestro plugin
      */
-    public function addScripts() {
+    static function addScripts() {
 
         $_pages = [
             'mi-plugin',
