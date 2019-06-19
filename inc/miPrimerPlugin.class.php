@@ -52,7 +52,7 @@ class miPrimerPlugin {
     /**
      * Pagina: dashboard
      */
-    public function pageDashboard() {
+    static function pageDashboard() {
     
         include _MY_PLUGIN_DIR.'admin/dashboard.php';
         
