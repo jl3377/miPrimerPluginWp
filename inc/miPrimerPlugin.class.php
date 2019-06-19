@@ -12,7 +12,7 @@ class miPrimerPlugin {
      * Activación del Plugin
      * @desc creación de tablas personalizadas 
      */
-     private function activation() {  
+     public function activation() {  
       
         global $wpdb;
         $table = $wpdb->prefix . 'miPrimerPlugin';
@@ -38,7 +38,7 @@ class miPrimerPlugin {
     public function addAdminMenu() {
 
         // main menu
-        add_menu_page('Mi Plugin', 'Mi Plugin', 'manage_options', 'mi-plugin', [ $this, 'pageDashboard' ], 'dashicons-visibility');
+        add_menu_page('Mi Plugin', 'Mi Plugin', 'manage_options', 'mi-plugin', [ __CLASS__, 'pageDashboard' ], 'dashicons-visibility');
         
         // submenus
         add_submenu_page('mi-plugin', 'SubMenu 1', 'SubMenu 1', 'manage_options', "mi-plugin-submenu-1", [ __CLASS__, 'pageSubMenu1' ] );
