@@ -11,10 +11,10 @@ class miPrimerPlugin {
     public function init() {
 
         // crear menús de administración
-        add_action( 'admin_menu', [ __CLASS__, 'addAdminMenu' ] );  
+        add_action( 'admin_menu', [ $this, 'addAdminMenu' ] );  
 
         // scripts backend    
-        add_action( 'admin_enqueue_scripts', [ __CLASS__, 'addScripts' ] );    
+        add_action( 'admin_enqueue_scripts', [ $this, 'addScripts' ] );    
 
     }
 
@@ -45,14 +45,14 @@ class miPrimerPlugin {
      * menus
      * @desc inclusión de menus y submenús al Plugin
      */
-    static function addAdminMenu() {
+    public function addAdminMenu() {
 
         // main menu
-        add_menu_page('Mi Plugin', 'Mi Plugin', 'manage_options', 'mi-plugin', [ __CLASS__, 'pageDashboard' ], 'dashicons-visibility');
+        add_menu_page('Mi Plugin', 'Mi Plugin', 'manage_options', 'mi-plugin', [ $this, 'pageDashboard' ], 'dashicons-visibility');
         
         // submenus
-        add_submenu_page('mi-plugin', 'SubMenu 1', 'SubMenu 1', 'manage_options', "mi-plugin-submenu-1", [ __CLASS__, 'pageSubMenu1' ] );
-        add_submenu_page('mi-plugin', 'SubMenu 2', 'SubMenu 2', 'manage_options', "mi-plugin-submenu-2", [ __CLASS__, 'pageSubMenu2' ] );
+        add_submenu_page('mi-plugin', 'SubMenu 1', 'SubMenu 1', 'manage_options', "mi-plugin-submenu-1", [ $this, 'pageSubMenu1' ] );
+        add_submenu_page('mi-plugin', 'SubMenu 2', 'SubMenu 2', 'manage_options', "mi-plugin-submenu-2", [ $this, 'pageSubMenu2' ] );
 
         // opciones
         add_options_page ('My Options', 'My Plugin', 'manage_options', 'my-plugin.php', 'my_plugin_page' );
@@ -62,7 +62,7 @@ class miPrimerPlugin {
     /**
      * Pagina: dashboard
      */
-    static function pageDashboard() {
+    public function pageDashboard() {
     
         include _MY_PLUGIN_DIR.'admin/dashboard.php';
         
@@ -75,7 +75,7 @@ class miPrimerPlugin {
      * Scripts
      * @desc inclusión de scripts a nuestro plugin
      */
-    static function addScripts() {
+    public function addScripts() {
 
         $_pages = [
             'mi-plugin',
